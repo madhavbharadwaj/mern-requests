@@ -1,29 +1,14 @@
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
+mongoose = require('./config/db');
 const logger = require("morgan");
-const Data = require("./data");
+const Data = require("./models/data");
 const cors = require('cors')
 
 const API_PORT = 3001;
 const app = express();
 const router = express.Router();
-
-// this is our MongoDB database
-const dbRoute = "mongodb://maddy:madhav123@ds011495.mlab.com:11495/fsmern";
-
-// connects our back end code with the database
-mongoose.connect(
-  dbRoute,
-  { useNewUrlParser: true }
-);
-
-let db = mongoose.connection;
-
-db.once("open", () => console.log("Connected to the database"));
-
-// checks if connection with the database is successful
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
